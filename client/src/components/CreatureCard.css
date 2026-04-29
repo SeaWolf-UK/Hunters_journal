@@ -1,0 +1,114 @@
+.creature-card {
+  background: #ffffff05;
+  border: 1px solid #ffffff10;
+  border-radius: 10px;
+  padding: 1rem;
+  transition: border-color 0.2s;
+}
+
+.creature-card:hover {
+  border-color: #ffffff20;
+}
+
+.creature-card__header {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-bottom: 0.3rem;
+}
+
+.creature-card__header h3 {
+  color: var(--gold);
+  font-size: 1.1rem;
+  margin: 0;
+}
+
+.creature-card__cr {
+  font-size: 0.75rem;
+  background: #ffffff10;
+  padding: 0.1rem 0.5rem;
+  border-radius: 4px;
+  color: var(--text-dim);
+}
+
+.creature-card__confidence {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  font-weight: bold;
+  letter-spacing: 0.5px;
+  margin-left: auto;
+}
+
+.creature-card__meta {
+  display: flex;
+  gap: 0.4rem;
+  flex-wrap: wrap;
+  margin-bottom: 0.5rem;
+}
+
+.creature-card__meta span {
+  font-size: 0.75rem;
+  color: var(--text-dim);
+  background: #ffffff08;
+  padding: 0.1rem 0.5rem;
+  border-radius: 3px;
+}
+
+.creature-card__score-bar {
+  height: 4px;
+  background: #ffffff10;
+  border-radius: 2px;
+  margin-bottom: 0.2rem;
+  overflow: hidden;
+}
+
+.creature-card__score-fill {
+  height: 100%;
+  border-radius: 2px;
+  transition: width 0.5s ease;
+}
+
+.creature-card__score-label {
+  font-size: 0.7rem;
+  color: var(--text-dim);
+}
+
+.creature-card__lore {
+  font-size: 0.85rem;
+  color: var(--text);
+  line-height: 1.5;
+  margin-top: 0.5rem;
+  font-style: italic;
+}
+
+.creature-card__traits {
+  display: flex;
+  gap: 0.3rem;
+  flex-wrap: wrap;
+  margin-top: 0.5rem;
+}
+
+.creature-card__trait-tag {
+  font-size: 0.7rem;
+  background: var(--accent);
+  color: white;
+  padding: 0.15rem 0.5rem;
+  border-radius: 4px;
+  opacity: 0.8;
+}
+
+.creature-card__reasons {
+  display: flex;
+  gap: 0.3rem;
+  flex-wrap: wrap;
+  margin-top: 0.5rem;
+}
+
+.creature-card__reason-tag {
+  font-size: 0.68rem;
+  background: #ffffff08;
+  color: var(--text-dim);
+  padding: 0.1rem 0.5rem;
+  border-radius: 3px;
+  border: 1px solid #ffffff10;
+}

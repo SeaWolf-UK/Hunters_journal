@@ -1,0 +1,199 @@
+:root {
+  --bg: #0a0a0f;
+  --surface: #12121a;
+  --text: #c8c8d4;
+  --text-dim: #6a6a7a;
+  --accent: #9b4dff;
+  --accent-glow: #9b4dff66;
+  --danger: #cc3333;
+  --gold: #c9a44b;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html, body, #root {
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Georgia', 'Times New Roman', serif;
+}
+
+.app {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100vh;
+  height: 100dvh;
+  overflow: hidden;
+  position: relative;
+}
+
+/* ---- Ambient Background ---- */
+.ambient-bg {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.ambient-bg__fog {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 50% 30%, #1a1025 0%, transparent 60%),
+              radial-gradient(ellipse at 20% 80%, #0d0815 0%, transparent 50%),
+              radial-gradient(ellipse at 80% 80%, #0d0815 0%, transparent 50%);
+  opacity: 0.8;
+}
+
+.ambient-bg__vignette {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at center, transparent 55%, #00000088 100%);
+}
+
+.ambient-bg__particle {
+  position: absolute;
+  bottom: -10px;
+  background: var(--accent);
+  border-radius: 50%;
+  opacity: 0.3;
+  animation: particleRise linear infinite;
+}
+
+@keyframes particleRise {
+  0% {
+    transform: translateY(0) scale(1);
+    opacity: 0;
+  }
+  20% {
+    opacity: 0.4;
+  }
+  100% {
+    transform: translateY(-100vh) scale(0.3);
+    opacity: 0;
+  }
+}
+
+/* ---- Admin toggle ---- */
+.app__admin-toggle {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  z-index: 10;
+  background: none;
+  border: 1px solid #ffffff15;
+  color: var(--text-dim);
+  padding: 0.5rem;
+  border-radius: 6px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  transition: color 0.2s;
+}
+
+.app__admin-toggle:hover {
+  color: var(--text);
+}
+
+/* ---- Skull area ---- */
+.app__skull-area {
+  flex: 1 1 auto;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  width: 100%;
+  z-index: 1;
+  overflow: hidden;
+  min-height: 0;
+  padding-top: 3vh;
+}
+
+/* ---- Response area ---- */
+.app__response-area {
+  flex: 0 0 auto;
+  width: 100%;
+  max-width: 720px;
+  z-index: 1;
+  padding: 0.5rem 0;
+  overflow-y: auto;
+  max-height: 40vh;
+}
+
+/* ---- Error ---- */
+.app__error {
+  z-index: 1;
+  margin: 1rem;
+  padding: 1rem 1.5rem;
+  background: #33000044;
+  border: 1px solid var(--danger);
+  border-radius: 10px;
+  text-align: center;
+  max-width: 500px;
+}
+
+.app__error p {
+  color: var(--danger);
+  font-style: italic;
+  margin-bottom: 0.5rem;
+}
+
+.app__error button {
+  background: none;
+  border: 1px solid var(--danger);
+  color: var(--danger);
+  padding: 0.3rem 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-family: 'Georgia', serif;
+}
+
+/* ---- Suggestions ---- */
+.app__suggestions {
+  flex: 0 0 auto;
+  z-index: 1;
+  margin-bottom: 0.5rem;
+  text-align: center;
+}
+
+.app__suggestions-hint {
+  color: var(--text-dim);
+  font-size: 0.85rem;
+  font-style: italic;
+  margin-bottom: 0.6rem;
+}
+
+.app__suggestions-chips {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.chip {
+  background: var(--surface);
+  border: 1px solid #ffffff15;
+  color: var(--text-dim);
+  padding: 0.4rem 0.9rem;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  cursor: pointer;
+  font-family: 'Georgia', serif;
+  font-style: italic;
+  transition: all 0.2s;
+}
+
+.chip:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+  box-shadow: 0 0 10px var(--accent-glow);
+}
+
+.chip:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
