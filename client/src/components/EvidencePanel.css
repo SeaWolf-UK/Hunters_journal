@@ -1,0 +1,32 @@
+.evidence-panel {
+  margin: 0 auto;
+  max-width: 640px;
+  padding: 0 1.5rem 1rem;
+}
+
+.evidence-panel__details {
+  background: var(--surface);
+  border: 1px solid #ffffff10;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.evidence-panel__summary {
+  padding: 0.8rem 1.2rem;
+  cursor: pointer;
+  color: var(--text-dim);
+  font-size: 0.9rem;
+  user-select: none;
+  transition: color 0.2s;
+}
+
+.evidence-panel__summary:hover {
+  color: var(--accent);
+}
+
+.evidence-panel__list {
+  padding: 0 1.2rem 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
