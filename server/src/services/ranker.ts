@@ -71,5 +71,5 @@ export function rankResults(matches: SearchMatch[]): RankedMatch[] {
   ranked.sort((a, b) => b.score - a.score);
 
   const MIN_SCORE = 40;
-  return ranked.filter(r => r.score >= MIN_SCORE).slice(0, 5);
+  return ranked.filter(r => r.score >= MIN_SCORE).slice(0, 20);
 }

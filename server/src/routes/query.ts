@@ -70,12 +70,12 @@ queryRouter.post('/query', async (req, res) => {
         // AI failed — fall back to rule-based
         const topMatch = allCandidateCreatures[0] || null;
         const intent = signals.intent;
-        const result = buildResponse(topMatch, allCandidateCreatures, intent, confidence);
+        const result = buildResponse(topMatch, allCandidateCreatures, intent, confidence, signals);
         answer = result.answer;
       }
     } else {
       // No candidates at all
-      const result = buildResponse(null, [], signals.intent, 'low');
+      const result = buildResponse(null, [], signals.intent, 'low', signals);
       answer = result.answer;
       finalMatches = [];
     }
