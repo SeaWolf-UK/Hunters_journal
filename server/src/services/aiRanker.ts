@@ -28,11 +28,12 @@ function buildPrompt(query: string, candidates: Creature[]): string {
   ];
 
   for (const c of candidates) {
+    const desc = truncate(c.description || c.lore_summary || '', 200);
     lines.push(
       `ID=${c.id}, ${c.name} — ${c.type}${c.subtype ? ' (' + c.subtype + ')' : ''}, ${c.size}. ` +
       `Lore: "${c.lore_summary || 'No summary'}". ` +
-      `${c.traits ? 'Traits: ' + truncate(c.traits, 200) + '. ' : ''}` +
-      `${c.description ? 'Description: ' + c.description : ''}`
+      `${c.traits ? 'Traits: ' + truncate(c.traits, 120) + '. ' : ''}` +
+      `${desc ? 'Description: ' + desc : ''}`
     );
   }
 
@@ -107,7 +108,7 @@ export async function aiRankAndRespond(
 
   try {
     const controller = new AbortController();
-    const timeoutId = setTimeout(() => controller.abort(), 30000); // 30s timeout
+    const timeoutId = setTimeout(() => controller.abort(), 20000); // 20s timeout
 
     const res = await fetch(`${OLLAMA_HOST}/api/generate`, {
       method: 'POST',
@@ -120,7 +121,7 @@ export async function aiRankAndRespond(
         format: 'json',
         options: {
           temperature: 0.7,
-          num_predict: 1500,
+          num_predict: 800,
         },
       }),
     });
@@ -165,7 +166,7 @@ export async function aiRankAndRespond(
     return null;
   } catch (err) {
     if ((err as Error)?.name === 'AbortError') {
-      console.warn('Ollama request timed out after 30s');
+      console.warn('Ollama request timed out after 20s');
     } else {
       console.warn('Ollama error:', err);
     }

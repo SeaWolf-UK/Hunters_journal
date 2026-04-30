@@ -46,7 +46,7 @@ queryRouter.post('/query', async (req, res) => {
     let confidence = preRanked[0]?.confidence || 'low';
 
     if (allCandidateCreatures.length > 0) {
-      const topCandidates = allCandidateCreatures.slice(0, 15);
+      const topCandidates = allCandidateCreatures.slice(0, 10);
       const aiResult = await aiRankAndRespond(text, topCandidates);
 
       if (aiResult) {
